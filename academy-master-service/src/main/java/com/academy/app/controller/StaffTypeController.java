@@ -23,23 +23,14 @@ public class StaffTypeController {
 
 	@Autowired
 	StaffTypeService staffTypeService;
-
-	@RequestMapping(value = "/demo")
-	public StaffType demo() {
-		System.out.println("StaffTypeController - Demo");
-		StaffType s= new StaffType();
-		s.setId(1);
-		return s;
-	}
 	
-	@RequestMapping(value = "/")
+	@RequestMapping(value = "/staffType")
 	public ResponseEntity<List<StaffType>> getAll() {
-		System.out.println("StaffTypeController - getAll");
 		List<StaffType> list = staffTypeService.findAll();
 		return new ResponseEntity<List<StaffType>>(list, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/staff/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/staffType/{id}", method = RequestMethod.GET)
 	public ResponseEntity<StaffType> get(@PathVariable Integer id) {
 		try {
 			StaffType obj = staffTypeService.findByID(id);
@@ -50,21 +41,21 @@ public class StaffTypeController {
 	}
 
 	// @RequestMapping(value = "/staff", method = RequestMethod.POST)
-	@PostMapping(value = "/staff")
+	@PostMapping(value = "/staffType")
 	public ResponseEntity<Void> addArticle(@RequestBody StaffType obj, UriComponentsBuilder builder) {
 		StaffType s = staffTypeService.save(obj);
 		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(builder.path("/staff/{id}").buildAndExpand(s.getId()).toUri());
+		headers.setLocation(builder.path("/staffType/{id}").buildAndExpand(s.getId()).toUri());
 		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	}
 
-	@DeleteMapping("/staff/{id}")
+	@DeleteMapping("/staffType/{id}")
 	public ResponseEntity<Void> deleteArticle(@PathVariable("id") Integer id) {
 		staffTypeService.delete(id);
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 
-	@PutMapping("/staff")
+	@PutMapping("/staffType")
 	public ResponseEntity<StaffType> updateArticle(@RequestBody StaffType obj) {
 		staffTypeService.update(obj);
 		return new ResponseEntity<StaffType>(obj, HttpStatus.OK);
