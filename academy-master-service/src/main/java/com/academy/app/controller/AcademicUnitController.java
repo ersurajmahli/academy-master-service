@@ -25,6 +25,7 @@ public class AcademicUnitController {
 	@Autowired
 	private AcademicUnitService academicUnitService;
 	
+	
 	@GetMapping("/academicUnit")
 	public ResponseEntity<List<AcademicUnit>> findAll(){
 		List<AcademicUnit> result = academicUnitService.findAll();

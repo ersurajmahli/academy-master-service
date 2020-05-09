@@ -24,6 +24,7 @@ public class StaffTypeController {
 	@Autowired
 	StaffTypeService staffTypeService;
 	
+	
 	@RequestMapping(value = "/staffType")
 	public ResponseEntity<List<StaffType>> getAll() {
 		List<StaffType> list = staffTypeService.findAll();

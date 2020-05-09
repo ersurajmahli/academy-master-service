@@ -25,6 +25,7 @@ public class AcademicYearsController {
 	@Autowired
 	private AcademicYearsService academicYearsService;
 	
+	
 	@GetMapping("/academicYears")
 	public ResponseEntity<List<AcademicYears>> findAll(){
 		List<AcademicYears> result = academicYearsService.findAll();

@@ -25,6 +25,7 @@ public class StaffBandController {
 	@Autowired
 	private StaffBandService staffBandService;
 	
+	
 	@GetMapping("/staffBand")
 	public ResponseEntity<List<StaffBand>> findAll(){
 		List<StaffBand> result = staffBandService.findAll();

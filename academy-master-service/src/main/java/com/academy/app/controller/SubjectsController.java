@@ -25,6 +25,7 @@ public class SubjectsController {
 	@Autowired
 	private SubjectsService subjectsService;
 	
+	
 	@GetMapping("/subjects")
 	public ResponseEntity<List<Subjects>> findAll(){
 		List<Subjects> result = subjectsService.findAll();
